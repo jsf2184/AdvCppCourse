@@ -1,0 +1,90 @@
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# CMake
+cmake-build-debug/
+cmake-build-release/
+
+# Mongo Explorer plugin
+.idea/**/mongoSettings.xml
+
+# File-based project format
+*.iws
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Cursive Clojure plugin
+.idea/replstate.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Editor-based Rest Client
+.idea/httpRequests
+
+
+# Ignore CI build directory
+build/
+xcuserdata
+cmake-build-debug/
+.idea/
+bazel-bin
+bazel-genfiles
+bazel-googletest
+bazel-out
+bazel-testlogs
+# python
+*.pyc
+
+# Visual Studio files
+*.sdf
+*.opensdf
+*.VC.opendb
+*.suo
+*.user
+_ReSharper.Caches/
+Win32-Debug/
+Win32-Release/
+x64-Debug/
+x64-Release/
+
+# Ignore autoconf / automake files
+Makefile.in
+aclocal.m4
+configure
+build-aux/
+autom4te.cache/
+lib/googletest-master/googletest/m4/libtool.m4
+lib/googletest-master/googletest/m4/ltoptions.m4
+lib/googletest-master/googletest/m4/ltsugar.m4
+lib/googletest-master/googletest/m4/ltversion.m4
+lib/googletest-master/googletest/m4/lt~obsolete.m4
+
+# Ignore generated directories.
+lib/googletest-master/googlemock/fused-src/
+lib/googletest-master/googletest/fused-src/
