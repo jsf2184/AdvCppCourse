@@ -1,3 +1,7 @@
+//
+// Section 2 Lesson 6
+//
+
 #include <exception>
 #include <gtest/gtest.h>
 
