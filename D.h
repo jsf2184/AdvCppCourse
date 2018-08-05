@@ -9,10 +9,10 @@
 #include "C.h"
 
 namespace jsf2184 {
-    class D {
+    class NoX {
 
     public:
-        D(int x) : _c(x) {}
+        NoX(int x) : _c(x) {}
 
         C getCValue() {
             return _c;

@@ -6,6 +6,8 @@
 #define ADVCPPCOURSE_XX_H
 
 #include <iostream>
+#include <mutex>
+
 using namespace std;
 
 class XX {
@@ -15,6 +17,12 @@ public:
 
     XX(int val) : _val(val) {
         cout << "The XX Constructor with _val = "
+             << _val
+             << endl;
+    }
+
+    XX(const XX &other) : _val(other._val) {
+        cout << "The XX Copy Constructor with _val = "
              << _val
              << endl;
     }

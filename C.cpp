@@ -5,7 +5,7 @@
 
 using jsf2184::C;
 
-bool C::_silent = false;
+bool C::_silent = true;
 
 namespace  jsf2184 {
     std::ostream &operator<<(std::ostream &os, const C &c) {

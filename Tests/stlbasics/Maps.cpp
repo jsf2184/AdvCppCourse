@@ -13,6 +13,8 @@ namespace {
 
     void populate(map<string, int> &ageMap) {
         ageMap["bob"] = 23;
+        ageMap["bob"] = 33;
+
         std::pair<string, int> pair = make_pair("jim", 24);
         ageMap.insert(pair);
         std::pair<string, int> pair2("alex", 25);

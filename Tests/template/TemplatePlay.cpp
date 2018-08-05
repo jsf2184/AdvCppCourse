@@ -10,11 +10,60 @@ using namespace std;
 
 namespace  jsf2184 {
 
+
+    template<typename T>
+    void print(T t) {
+        cout << "templatePrint(): " << t << endl;
+    }
+
+    void print(int t) {
+        cout << "nonTemplatePrint(): " << t << endl;
+    }
+
+    TEST(TemplatePlayTests, printTest) {
+        // type inference helps us out here
+        cout << endl;
+        print(5);
+        print<>(6);
+        print("hello");
+    }
+
+    template<typename F>
+    int callIt(F func) {
+        cout << endl;
+        int res = func();
+        cout << "callIt returning " << res << endl;
+        return res;
+    }
+
+    int return1() {
+        return 1;
+    }
+
+    TEST(TemplatePlayTests, templateSimpleCall) {
+        EXPECT_EQ(1, callIt<>(return1));
+    }
+
+    class Functor7 {
+    public:
+        int operator() () {
+            return 7;
+        }
+    };
+
+    TEST(TemplatePlayTests, templateFunctorCall) {
+        EXPECT_EQ(7, callIt<>(Functor7()));
+    }
+
+    TEST(TemplatePlayTests, templateLambdaCall) {
+        EXPECT_EQ(9, callIt<>([]() {return 9;}) );
+    }
+
+
     class HasX {
         virtual ~HasX(){}
         virtual int getX() = 0;
     };
-
 
     // Use XHolder class to demonstrate what happens if we make an
     // assumption that 'T' has a getX() method. C++ allows us to
@@ -34,10 +83,22 @@ namespace  jsf2184 {
         T _actual;
     };
 
-    class D {
+    TEST(TemplatePlayTests, HasXTest) {
+        XHolder<C> xHolder(C(3));
+        EXPECT_EQ(3, xHolder.getX());
+    }
+
+    class NoX {
     public:
-        D() {cout << "D constructor" << endl;}
+        NoX(int x) {cout << "NoX constructor" << endl;}
     };
+
+    TEST(TemplatePlayTests, NoXTest) {
+        XHolder<NoX> xHolder(NoX(3));
+        // wont compile because NoX has no getX() method
+      /* xHolder.getX(); */
+    }
+
 
 
     // Note that Class E and Class F below are in no way related, yet both have a run()
@@ -69,7 +130,7 @@ namespace  jsf2184 {
         virtual void mainLoop() = 0;
     };
 
-    
+
     template<class T>
     class FakeVirtualRunner : public BaseVirtualRunner{
     public:
@@ -89,36 +150,6 @@ namespace  jsf2184 {
     private:
         T _worker;
     };
-
-
-    template<typename T>
-    void print(T t) {
-        cout << "templatePrint(): " << t << endl;
-    }
-
-    void print(int t) {
-        cout << "nonTemplatePrint(): " << t << endl;
-    }
-
-    TEST(TemplatePlayTests, HasXTest) {
-        XHolder<C> xHolder(C(3));
-        EXPECT_EQ(3, xHolder.getX());
-    }
-
-    TEST(TemplatePlayTests, NoXTest) {
-        /* wont compile because D has no getX() method
-          XHolder<D> xHolder(D(3));
-          EXPECT_EQ(3, xHolder.getX());
-        */
-    }
-
-    TEST(TemplatePlayTests, printTest) {
-        // type inference helps us out here
-        cout << endl;
-        print(5);
-        print<>(6);
-        print("hello");
-    }
 
     // A simple factory method to create the right templated type of BaseVirtualRunner
     BaseVirtualRunner *create(char kind) {

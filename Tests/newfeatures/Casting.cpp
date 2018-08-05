@@ -60,7 +60,7 @@ namespace jsf2184 {
         }
     };
 
-    class D : public B {
+    class NoX : public B {
     public:
         virtual string getName() {
             return "D";
@@ -68,7 +68,7 @@ namespace jsf2184 {
     };
 
     TEST(CASTING_TESTS, upCasts) {
-        D d;
+        NoX d;
         B *bptr;
 
         // casting is not even required.
@@ -90,44 +90,44 @@ namespace jsf2184 {
     }
 
     TEST(CASTING_TESTS, goodDownCasts) {
-        D d;
+        NoX d;
         B *bptr = &d;
-        D *dptr;
+        NoX *dptr;
 
         // simple cast works fine.
-        dptr = (D *) bptr;
+        dptr = (NoX *) bptr;
         EXPECT_EQ("D", dptr->getName());
 
         // works fine
-        dptr = static_cast<D *>(bptr);
+        dptr = static_cast<NoX *>(bptr);
         EXPECT_EQ("D", dptr->getName());
 
         // works fine
-        dptr = dynamic_cast<D *>(bptr);
+        dptr = dynamic_cast<NoX *>(bptr);
         EXPECT_EQ("D", dptr->getName());
 
         // works fine
-        dptr = reinterpret_cast<D *>(bptr);
+        dptr = reinterpret_cast<NoX *>(bptr);
         EXPECT_EQ("D", dptr->getName());
     }
 
     TEST(CASTING_TESTS, badDownCasts) {
         B b;
         B *bptr = &b;
-        D *dptr;
+        NoX *dptr;
 
         // simple invalid cast is allowed
-        dptr = (D *) bptr;
+        dptr = (NoX *) bptr;
 
         // invalid static cast is allowed
-        dptr = static_cast<D *>(bptr);
+        dptr = static_cast<NoX *>(bptr);
 
         // dynamic cast knows that this is not good.
-        dptr = dynamic_cast<D *>(bptr);
+        dptr = dynamic_cast<NoX *>(bptr);
         EXPECT_EQ(nullptr, dptr);
 
         // invalid reinterpret_cast is allowed
-        dptr = reinterpret_cast<D *>(bptr);
+        dptr = reinterpret_cast<NoX *>(bptr);
     }
 
     // X and Y are two unrelated classes.

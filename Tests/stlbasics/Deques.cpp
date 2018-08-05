@@ -25,12 +25,14 @@ namespace jsf2184 {
     }
 
     void print(deque<C> &aDeque) {
+        cout << endl << "printing deque" << endl;
         for (auto it = aDeque.begin(); it < aDeque.end(); it++) {
             cout << *it << " ";
         }
     }
 
     TEST(DequeTests, popAndPrint) {
+        cout << endl;
         deque<C> aDeque;
         populateBack(aDeque, 10, 10);
         print(aDeque);

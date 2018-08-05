@@ -17,7 +17,9 @@ namespace {
         }
     }
 
-    void print(const multimap<int, int>::const_iterator start,  const multimap<int, int>::const_iterator finish) {
+    void print(const multimap<int, int>::const_iterator start,
+               const multimap<int, int>::const_iterator finish)
+    {
         cout << endl;
         for (auto it=start; it != finish; it++) {
             cout << it->first <<  " : " << it->second << endl;

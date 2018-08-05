@@ -32,6 +32,14 @@ namespace jsf2184 {
         EXPECT_EQ(3, ptr->getVal());
     }
 
+
+    TEST(SPTR_TESTS, makeSharedFromObject) {
+        cout << endl;
+        XX xx(9);
+        shared_ptr<XX> ptr = make_shared<XX>(xx);
+        EXPECT_EQ(9, ptr->getVal());
+    }
+
     TEST(SPTR_TESTS, makeNullSharedPtr) {
         shared_ptr<XX> ptr;
         EXPECT_FALSE(ptr);

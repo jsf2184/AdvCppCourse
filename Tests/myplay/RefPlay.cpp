@@ -76,7 +76,7 @@ namespace  jsf2184 {
     }
 
     TEST(RefPlayTests, testDreturnsCValAssignedToRef) {
-        D d(3);
+        NoX d(3);
 
 
 //      C &cref = d.getCValue(); // compiler doesn't allow. Left side needs to be lvalue.
